@@ -1,22 +1,20 @@
 
-import losoweDane
-import bitoper
+import bitOperations
 
 
 vecMultAdd = [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1];
-MultScrmblrInitV = [0,0,1,0,1,1,0,0,0,0,1,1,0,1,0,1,0];
+multScrmblrInitV = [0,0,1,0,1,1,0,0,0,0,1,1,0,1,0,1,0];
 
-def MultScramb( Dane, ConVect, InitState ) :
-    InBits = bitoper.BajtDoBitow(Dane)
-    BitLen = len(InBits)
-    RegState = InitState[:]
-    OutBits = [0]*BitLen
-    for j in range(BitLen) :
-        RegBit = (sum([v1*v2 for v1,v2 in zip(RegState,ConVect)])%2)
-        OutBits[j] = InBits[j]^RegBit
-        RegState[1:] = RegState[:-1]
-        RegState[0] = OutBits[j]
-    return bitoper.BityDoBajtow(OutBits)
+def multScramb( data, eqVect, initState ) :
+    inBits = bitOperations.bytes2Bits(data)
+    bitLen = len(inBits)
+    tmpState = initState[:]
+    outBits = [0]*bitLen
+    for j in range(bitLen) :
+        outBits[j] = inBits[j]^ (sum([v1*v2 for v1,v2 in zip(tmpState,eqVect)])%2)
+        tmpState[1:] = tmpState[:-1]
+        tmpState[0] = outBits[j]
+    return bitOperations.bits2Bytes(outBits)
 
 if __name__ == '__main__':
     print("obsluge plikow mozna dorobic")
