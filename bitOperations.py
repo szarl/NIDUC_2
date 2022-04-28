@@ -1,6 +1,7 @@
 import randomData
 
-def bits2Bytes( inBits ) :
+def bits2Bytes( inBits ):
+    """Converts bits to bytes"""
     inLen = len(inBits)
     outBytes = [0]*(inLen>>3)
     for j in range(inLen) :
@@ -9,7 +10,8 @@ def bits2Bytes( inBits ) :
     return outBytes
 
 
-def bytes2Bits( inBytes ) :
+def bytes2Bits( inBytes ):
+    """Converts bytes to bits"""
     outLen = len(inBytes)<<3
     outBits = [0]*outLen
     for j in range(outLen) :
@@ -21,15 +23,15 @@ def bytes2Bits( inBytes ) :
 def testBitConv():
     inp = randomData.randomBytes(16)
     out = bits2Bytes(bytes2Bits(inp))
+    assert(inp == out)
     print("wejscie:",inp)
     print("wyjscie:",out)
     inp = randomData.randomBits(24)
     out = bytes2Bits(bits2Bytes(inp))
+    assert(inp == out)
     print("wejscie:",inp)
     print("wyjscie:",out)
     return
-
-
 
 if __name__ == '__main__':
     testBitConv()

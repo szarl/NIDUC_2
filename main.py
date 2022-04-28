@@ -1,5 +1,5 @@
 import randomData
-import additive_de_scrambler
+import addScrambler
 import bitsLength
 import bitOperations
 
@@ -9,10 +9,10 @@ if __name__ == '__main__':
     dane = randomData.randomBytes(16)
     dlugosciniezmiennedane = bitsLength.bitsLength(dane)
 
-    scrambled = additive_de_scrambler.addScramb(dane,additive_de_scrambler.addvectorDVB,additive_de_scrambler.poczotkowaWartoscDVB)
+    scrambled = addScrambler.addScramb(dane,addScrambler.addvectorDVB,addScrambler.initialValueDVB)
     dnzscrambled = bitsLength.bitsLength(scrambled)
 
-    unscrambled = additive_de_scrambler.addScramb(scrambled,additive_de_scrambler.addvectorDVB,additive_de_scrambler.poczotkowaWartoscDVB)
+    unscrambled = addScrambler.addScramb(scrambled,addScrambler.addvectorDVB,addScrambler.initialValueDVB)
     dnzunscrambled = bitsLength.bitsLength(unscrambled)
 
     print("maksymalna dlugosc dla niezmieniajacych sie bitow")
@@ -28,10 +28,10 @@ if __name__ == '__main__':
     dane = bitOperations.bits2Bytes(randomData.randomBits(16*8,9))
     dlugosciniezmiennedane = bitsLength.bitsLength(dane)
 
-    scrambled = additive_de_scrambler.addScramb(dane,additive_de_scrambler.addvectorDVB,additive_de_scrambler.poczotkowaWartoscDVB)
+    scrambled = addScrambler.addScramb(dane,addScrambler.addvectorDVB,addScrambler.initialValueDVB)
     dnzscrambled = bitsLength.bitsLength(scrambled)
 
-    unscrambled = additive_de_scrambler.addScramb(scrambled,additive_de_scrambler.addvectorDVB,additive_de_scrambler.poczotkowaWartoscDVB)
+    unscrambled = addScrambler.addScramb(scrambled,addScrambler.addvectorDVB,addScrambler.initialValueDVB)
     dnzunscrambled = bitsLength.bitsLength(unscrambled)
     
     print("maksymalna dlugosc dla niezmieniajacych sie bitow")
