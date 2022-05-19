@@ -3,4 +3,3 @@ Set enviroment for niduc project
 
 Python version: 3.9  
 pip version: 22.0.4  
-numpy version: 1.22.3

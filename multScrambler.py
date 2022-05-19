@@ -4,7 +4,7 @@ import bitOperations
 vecMultAdd = [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1]
 multScrmblrInitV = [0,0,1,0,1,1,0,0,0,0,1,1,0,1,0,1,0]
 
-def multScramb( bytes, eqVect=vecMultAdd, initState=multScrmblrInitV ):
+def multScramb( bytes, eqVect, initState ):
     """
     Scrambles data
 
