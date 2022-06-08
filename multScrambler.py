@@ -24,7 +24,7 @@ def multScramb( bytes, eqVect=vecMultAdd, initState=multScrmblrInitV ):
         tmpState[0] = outBits[j]
     return bitOperations.bits2Bytes(outBits)
 
-def multDescramb( InBytes, eqVect, initState ):
+def multDescramb( InBytes, eqVect = vecMultAdd, initState = [0]*17):
     """
     Descrambles data
 
@@ -47,14 +47,14 @@ def multDescramb( InBytes, eqVect, initState ):
     return bitOperations.bits2Bytes(outBits)
 
 def testMultScr():
-    inp = randomData.randomBytes(16);
+    inp = randomData.randomBytes(16)
     scr = multScramb(inp,vecMultAdd,multScrmblrInitV)
     out = multDescramb(scr,vecMultAdd,multScrmblrInitV)
     out2 = multDescramb(scr,vecMultAdd,[0]*17)
     print("Dane:               ",inp)
-    print("scrambled:          ",scr)
-    print("synchronised output:",out)
-    print("desynchronised:     ",out2)  # tylko 2 pierwsze bajty(17 bitow) sie zle przesylaja
+    print("Scrambled:          ",scr)
+    print("Synchronised output:",out)
+    print("Desynchronised:     ",out2)  # tylko 2 pierwsze bajty(17 bitow) sie zle przesylaja
 
 
 if __name__ == '__main__':

@@ -1,3 +1,4 @@
+from multScrambler import multDescramb, multScramb
 import randomData
 import addScrambler
 import bitsLength
@@ -15,6 +16,7 @@ if __name__ == '__main__':
     unscrambled = addScrambler.addScramb(scrambled,addScrambler.addvectorDVB,addScrambler.initialValueDVB)
     dnzunscrambled = bitsLength.bitsLength(unscrambled)
 
+    print('Additive scrambler')
     print("maksymalna dlugosc dla niezmieniajacych sie bitow")
     print("w danych wpelni losowych:",max(dlugosciniezmiennedane))
     print("w scramblowanych danych: ",max(dnzscrambled))
@@ -28,12 +30,12 @@ if __name__ == '__main__':
     dane = bitOperations.bits2Bytes(randomData.randomBits(16*8,9))
     dlugosciniezmiennedane = bitsLength.bitsLength(dane)
 
-    scrambled = addScrambler.addScramb(dane,addScrambler.addvectorDVB,addScrambler.initialValueDVB)
+    scrambled = multScramb(dane)
     dnzscrambled = bitsLength.bitsLength(scrambled)
-
-    unscrambled = addScrambler.addScramb(scrambled,addScrambler.addvectorDVB,addScrambler.initialValueDVB)
+    unscrambled = multDescramb(scrambled)
     dnzunscrambled = bitsLength.bitsLength(unscrambled)
     
+    print('Multiplicative scrambler')
     print("maksymalna dlugosc dla niezmieniajacych sie bitow")
     print("w danych z wieksza iloscia zer:",max(dlugosciniezmiennedane))
     print("w scramblowanych danych:       ",max(dnzscrambled))
