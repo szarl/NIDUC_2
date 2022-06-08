@@ -25,16 +25,16 @@ def save(name, data):
 def plotData(name, data):
     plt.figure(name)
     plt.title(name)
-    plt.xlabel('ilosc niezmieniajacych sie bitow')
+    plt.xlabel('liczba niezmieniajacych sie bitow')
+    plt.ylabel('liczba bitow')
     showPlot(data)
     save(name,data)
     filename = 'plots/'+name.replace(' ', '_')+'.png'
     plt.savefig(filename)
 
-# data as bits
 def testData(data):
     zeroesPerc = data.count(0) / len(data)
-    message = ' (0 to '+ str(zeroesPerc) + '% wszystkich bitow)'
+    message = ' (All to '+ str(zeroesPerc) + '% wszystkich bitow)'
     dataBytes = bitOperations.bits2Bytes(data)
 
     plotData('Losowe dane ' + message, data)
@@ -57,11 +57,9 @@ if __name__ == "__main__":
     randData = rand.randomBits(LEN_OF_DATA)
     testData(randData)
 
-    # random data with more zeroes
     randDataZeroes = rand.randomBits(LEN_OF_DATA,999)
     testData(randDataZeroes)
 
-    # random data with more ones
     randDataOnes = rand.randomBits(LEN_OF_DATA,999)
     for i in range(LEN_OF_DATA):
         randDataOnes[i] = (randDataOnes[i]+1)%2
